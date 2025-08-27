@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -12,139 +13,92 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("#home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState("#home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY + 150;
-      navItems.forEach((item) => {
-        const section = document.querySelector(item.href);
-        if (section) {
-          const top = section.getBoundingClientRect().top + window.scrollY;
-          const bottom = top + section.clientHeight;
-          if (scrollY >= top && scrollY < bottom) setActive(item.href);
-        }
-      });
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full bg-[#1f242d]/95 backdrop-blur-lg z-50 shadow-md"
-      role="navigation"
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#1f242d]/90 backdrop-blur-md shadow-lg" : "bg-transparent"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
         {/* Logo */}
-        <motion.h1
-          whileHover={{ scale: 1.08 }}
-          className="text-2xl md:text-3xl font-bold cursor-pointer bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-500 text-transparent bg-clip-text"
+        <a
+          href="#home"
+          className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400"
         >
-          Portfolio
-        </motion.h1>
+          Afeef
+        </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-10 text-lg font-medium">
+        <div className="hidden md:flex gap-8">
           {navItems.map((item, i) => (
-            <motion.li
+            <motion.a
               key={i}
-              whileHover={{ y: -2, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="relative"
+              href={item.href}
+              onClick={() => setActive(item.href)}
+              whileHover={{ scale: 1.1 }}
+              className={`${
+                active === item.href
+                  ? "text-cyan-400"
+                  : "text-white hover:text-purple-300"
+              } font-medium transition-colors duration-300`}
             >
-              <a
+              {item.name}
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          className="md:hidden text-2xl text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Mobile Fullscreen Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-[#1f242d]/95 backdrop-blur-sm z-40 flex flex-col items-center justify-center gap-8"
+          >
+            {navItems.map((item, i) => (
+              <motion.a
+                key={i}
                 href={item.href}
-                className={`${
+                onClick={() => {
+                  setActive(item.href);
+                  setIsMobileMenuOpen(false);
+                }}
+                whileHover={{ scale: 1.1 }}
+                className={`text-2xl font-medium ${
                   active === item.href
                     ? "text-cyan-400"
                     : "text-white hover:text-purple-300"
                 } transition-colors duration-300`}
               >
                 {item.name}
-                {active === item.href && (
-                  <motion.span
-                    layoutId="underline"
-                    className="absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 rounded"
-                  />
-                )}
-              </a>
-            </motion.li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 relative z-50"
-        >
-          <motion.span
-            className="block w-8 h-0.5 bg-white rounded"
-            animate={{
-              rotate: isMobileMenuOpen ? 45 : 0,
-              y: isMobileMenuOpen ? 8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className="block w-8 h-0.5 bg-white rounded my-1"
-            animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className="block w-8 h-0.5 bg-white rounded"
-            animate={{
-              rotate: isMobileMenuOpen ? -45 : 0,
-              y: isMobileMenuOpen ? -8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          />
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            {/* Menu */}
-            <motion.ul
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="fixed top-0 right-0 h-full w-2/3 bg-[#1f242d] text-white flex flex-col items-center gap-8 py-24 shadow-xl md:hidden"
-            >
-              {navItems.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-lg ${
-                    active === item.href
-                      ? "text-cyan-400"
-                      : "text-white hover:text-purple-300"
-                  } transition-colors duration-300`}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </motion.ul>
-          </>
+              </motion.a>
+            ))}
+          </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }
