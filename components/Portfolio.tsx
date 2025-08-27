@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaPython, FaNodeJs, FaRobot } from "react-icons/fa";
-import { SiTensorflow, SiMongodb, SiNextdotjs, SiDocker, SiKubernetes, SiAwsamplify } from "react-icons/si";
+import { SiTensorflow, SiMongodb, SiDocker, SiKubernetes, SiAwsamplify } from "react-icons/si";
 import { MdAnalytics } from "react-icons/md";
 import React from "react";
 
@@ -90,7 +90,7 @@ const badgeIcons: Record<string, React.ReactNode> = {
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  // const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects =
     filter === "All" ? projects : projects.filter((p) => p.badge === filter);
@@ -144,7 +144,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="bg-[#2a2f3a]/80 rounded-xl p-5 flex flex-col justify-between h-[340px] hover:border hover:border-cyan-400/40 shadow-lg backdrop-blur-md"
-              onClick={() => setSelectedProject(project)}
+              // onClick={() => setSelectedProject(project)}
             >
               <div>
                 {/* Badge with Icon */}
