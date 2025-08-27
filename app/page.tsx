@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Service from "@/components/Service";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
