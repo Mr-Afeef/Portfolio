@@ -170,59 +170,71 @@ export default function ContactSection() {
           Send Message
         </motion.button>
       </motion.form>
+{/* Social Links */}
+<div className="max-w-4xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+  {/* LinkedIn */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.02 }}
+    className="relative group p-[2px] rounded-3xl transition-all duration-500"
+  >
+    {/* Border Glow on Hover */}
+    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none"></div>
 
-      {/* Social Links */}
-      <div className="max-w-4xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* LinkedIn */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.02 }}
-          className="relative bg-[#2a2f3a]/80 p-6 rounded-3xl shadow-2xl backdrop-blur-md border border-gradient-to-r from-purple-400 to-cyan-400 flex flex-col items-center text-center"
-        >
-          <FaLinkedin className="text-5xl text-gradient bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4" />
-          <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
-            LinkedIn
-          </h3>
-          <p className="text-gray-300 mb-4">
-            5k+ Followers • Active in AI/ML Community
-          </p>
-          <a
-            href="https://www.linkedin.com/in/mr-afeef-553231375"
-            target="_blank"
-            className="px-6 py-2 bg-gradient-to-r from-purple-400 to-cyan-400 text-[#1f242d] rounded-lg font-semibold transition hover:shadow-lg"
-          >
-            Visit Profile
-          </a>
-        </motion.div>
+    {/* Actual Card */}
+    <div className="relative bg-[#2a2f3a]/80 p-6 rounded-3xl shadow-2xl backdrop-blur-md flex flex-col items-center text-center border-2 border-transparent">
+      <FaLinkedin className="text-5xl text-gradient bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4" />
+      <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
+        LinkedIn
+      </h3>
+      <p className="text-gray-300 mb-4">
+        5k+ Followers • Active in AI/ML Community
+      </p>
+      <a
+        href="https://www.linkedin.com/in/mr-afeef-553231375"
+        target="_blank"
+        className="px-6 py-2 bg-gradient-to-r from-purple-400 to-cyan-400 text-[#1f242d] rounded-lg font-semibold transition hover:shadow-lg"
+      >
+        Visit Profile
+      </a>
+    </div>
+  </motion.div>
 
-        {/* GitHub */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.02 }}
-          className="relative bg-[#2a2f3a]/80 p-6 rounded-3xl shadow-2xl backdrop-blur-md border border-gradient-to-r from-purple-400 to-cyan-400 flex flex-col items-center text-center"
-        >
-          <FaGithub className="text-5xl text-gradient bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4" />
-          <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
-            GitHub
-          </h3>
-          <p className="text-gray-300 mb-4">
-            50+ Repositories • AI/ML Projects & Open Source
-          </p>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            className="px-6 py-2 bg-gradient-to-r from-purple-400 to-cyan-400 text-[#1f242d] rounded-lg font-semibold transition hover:shadow-lg"
-          >
-            Visit GitHub
-          </a>
-        </motion.div>
-      </div>
+  {/* GitHub */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.02 }}
+    className="relative group p-[2px] rounded-3xl transition-all duration-500"
+  >
+    {/* Border Glow on Hover */}
+    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none"></div>
+
+    {/* Actual Card */}
+    <div className="relative bg-[#2a2f3a]/80 p-6 rounded-3xl shadow-2xl backdrop-blur-md flex flex-col items-center text-center border-2 border-transparent">
+      <FaGithub className="text-5xl text-gradient bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4" />
+      <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
+        GitHub
+      </h3>
+      <p className="text-gray-300 mb-4">
+        50+ Repositories • AI/ML Projects & Open Source
+      </p>
+      <a
+        href="https://github.com/mr-afeef"
+        target="_blank"
+        className="px-6 py-2 bg-gradient-to-r from-purple-400 to-cyan-400 text-[#1f242d] rounded-lg font-semibold transition hover:shadow-lg"
+      >
+        Visit GitHub
+      </a>
+    </div>
+  </motion.div>
+</div>
+
     </section>
   );
 }
