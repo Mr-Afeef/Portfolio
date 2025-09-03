@@ -111,35 +111,37 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
+            {/* Full-Screen Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            {/* Menu */}
+
+            {/* Full-Screen Menu */}
             <motion.ul
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="fixed top-0 right-0 h-full w-2/3 bg-[#1f242d] text-white flex flex-col items-center gap-8 py-24 shadow-xl md:hidden"
+              className="fixed top-0 right-0 h-screen w-full bg-[#1f242d] text-white flex flex-col items-center justify-center gap-8 px-6 z-50 md:hidden"
             >
               {navItems.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-lg ${
-                    active === item.href
-                      ? "text-cyan-400"
-                      : "text-white hover:text-purple-300"
-                  } transition-colors duration-300`}
-                >
-                  {item.name}
-                </a>
+                <li key={i} className="w-full text-center">
+                  <a
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-lg ${
+                      active === item.href
+                        ? "text-cyan-400"
+                        : "text-white hover:text-purple-300"
+                    } transition-colors duration-300 block py-2`}
+                  >
+                    {item.name}
+                  </a>
+                </li>
               ))}
             </motion.ul>
           </>

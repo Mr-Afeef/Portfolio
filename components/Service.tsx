@@ -4,38 +4,39 @@ import { motion } from "framer-motion";
 import { FaRobot, FaChartLine, FaBrain, FaDatabase, FaCloud, FaNetworkWired } from "react-icons/fa";
 
 export default function Services() {
-  const services = [
-    {
-      title: "Machine Learning Engineering",
-      desc: "Building scalable machine learning models and deploying them into production systems.",
-      icon: <FaBrain className="text-4xl text-cyan-400 mb-4" />,
-    },
-    {
-      title: "Data Science & Analytics",
-      desc: "Extracting insights from structured and unstructured data with Python, SQL, and dashboards.",
-      icon: <FaChartLine className="text-4xl text-cyan-400 mb-4" />,
-    },
-    {
-      title: "AI Solution Architecture",
-      desc: "Designing end-to-end AI pipelines with MLOps practices for real-world impact.",
-      icon: <FaRobot className="text-4xl text-cyan-400 mb-4" />,
-    },
-    {
-      title: "Generative AI & LLMs",
-      desc: "Fine-tuning and deploying large language models for enterprise use cases.",
-      icon: <FaNetworkWired className="text-4xl text-cyan-400 mb-4" />,
-    },
-    {
-      title: "Big Data & Cloud AI",
-      desc: "Leveraging AWS, GCP, and Azure services to train and deploy AI models at scale.",
-      icon: <FaCloud className="text-4xl text-cyan-400 mb-4" />,
-    },
-    {
-      title: "Data Engineering",
-      desc: "Designing data pipelines, ETL workflows, and scalable database solutions.",
-      icon: <FaDatabase className="text-4xl text-cyan-400 mb-4" />,
-    },
-  ];
+const services = [
+  {
+    title: "Applied Machine Learning Engineering",
+    desc: "Designing and deploying ML systems that scale to millions of users, with optimized inference pipelines and real-time serving.",
+    icon: <FaBrain className="text-4xl text-cyan-400 mb-4" />,
+  },
+  {
+    title: "Data Science & Business Intelligence",
+    desc: "Translating raw data into actionable insights through predictive modeling, A/B testing, and advanced visualization dashboards.",
+    icon: <FaChartLine className="text-4xl text-cyan-400 mb-4" />,
+  },
+  {
+    title: "AI Systems & Solution Architecture",
+    desc: "Building enterprise-grade AI ecosystems integrating LLMs, multimodal models, and MLOps pipelines with cloud-native deployment.",
+    icon: <FaRobot className="text-4xl text-cyan-400 mb-4" />,
+  },
+  {
+    title: "Generative AI & Foundation Models",
+    desc: "Developing cutting-edge generative AI solutions including LLM fine-tuning, RAG pipelines, and domain-specific foundation models.",
+    icon: <FaNetworkWired className="text-4xl text-cyan-400 mb-4" />,
+  },
+  {
+    title: "Cloud AI & Big Data Infrastructure",
+    desc: "Leveraging distributed computing, GPU clusters, and serverless AI platforms on AWS, GCP, and Azure for large-scale workloads.",
+    icon: <FaCloud className="text-4xl text-cyan-400 mb-4" />,
+  },
+  {
+    title: "Data Engineering & Real-Time Pipelines",
+    desc: "Architecting ETL/ELT workflows, data lakes, and streaming pipelines (Kafka, Spark, Airflow) to support AI-first applications.",
+    icon: <FaDatabase className="text-4xl text-cyan-400 mb-4" />,
+  },
+];
+
 
   return (
     <motion.section

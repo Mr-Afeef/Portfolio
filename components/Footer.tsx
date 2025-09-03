@@ -11,20 +11,14 @@ export default function Footer() {
     { name: "Contact", href: "#contact" },
   ];
 
-  const services = [
-    "AI Solutions",
-    "ML Models",
-    "Data Analysis",
-    "Automation Tools",
-  ];
+  const services = ["AI Solutions", "ML Models", "Data Analysis", "Automation Tools"];
 
   const socialLinks = [
     { Icon: FaGithub, href: "https://github.com/mr-afeef" },
     { Icon: FaLinkedin, href: "https://linkedin.com/Mr_Afeef" },
     { Icon: FaTwitter, href: "https://twitter.com/mrafeef008" },
-    { Icon: FaEnvelope, href: "mrafeef008@email.com" },
+    { Icon: FaEnvelope, href: "mailto:mrafeef008@email.com" },
   ];
-
 
   return (
     <footer className="relative overflow-hidden bg-[#1f242d] text-gray-300">
@@ -43,22 +37,22 @@ export default function Footer() {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-8 sm:gap-y-10 gap-x-6 sm:gap-x-8 z-10">
         
         {/* Branding / About */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-center sm:text-left px-2"
         >
-          <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-3">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-3">
             Muhammad Afeef
           </h2>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            AI & ML Engineer crafting next-gen solutions with 
-            intelligent systems and scalable architectures. 
-            Focused on building impactful AI products for 
-            real-world challenges.
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            AI & ML Engineer crafting next-gen solutions with intelligent systems 
+            and scalable architectures. Focused on building impactful AI products 
+            for real-world challenges.
           </p>
         </motion.div>
 
@@ -67,11 +61,12 @@ export default function Footer() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-center sm:text-left px-2"
         >
-          <h2 className="text-xl font-bold text-white mb-3 border-b-2 border-cyan-400 inline-block">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 border-b-2 border-cyan-400 inline-block">
             Explore
           </h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm sm:text-base">
             {links.map((link, idx) => (
               <motion.li
                 key={idx}
@@ -91,11 +86,12 @@ export default function Footer() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-center sm:text-left px-2"
         >
-          <h2 className="text-xl font-bold text-white mb-3 border-b-2 border-purple-400 inline-block">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 border-b-2 border-purple-400 inline-block">
             Services
           </h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm sm:text-base">
             {services.map((service, idx) => (
               <motion.li
                 key={idx}
@@ -108,16 +104,17 @@ export default function Footer() {
           </ul>
         </motion.div>
 
-        {/* Social Links with Neon Hover */}
+        {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+          className="text-center sm:text-left px-2"
         >
-          <h2 className="text-xl font-bold text-white mb-3 border-b-2 border-purple-400 inline-block">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 border-b-2 border-purple-400 inline-block">
             Connect
           </h2>
-          <div className="flex space-x-6 text-2xl">
+          <div className="flex justify-center sm:justify-start space-x-4 sm:space-x-6 text-xl sm:text-2xl">
             {socialLinks.map(({ Icon, href }, idx) => (
               <a
                 key={idx}
@@ -140,7 +137,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative border-t border-gray-700 text-center py-6 text-sm text-gray-500 z-10">
+      <div className="relative border-t border-gray-700 text-center py-4 text-xs sm:text-sm text-gray-500 z-10 px-2">
         © {new Date().getFullYear()}{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 font-semibold">
           Muhammad Afeef
